@@ -5,7 +5,8 @@
 - 6版本对此进行了改进 可以使用 \u{20BB7}来表示四字节的字符
 
 #### codePointAt
--js之前的charCodeAt 不能完整识别4字节的字符串
+- js之前的charCodeAt 不能完整识别4字节的字符串
+- 可以用此方法来判断是不是四个字节的字符，取值与0xFFFF进行比较就可以得出
 
 ``` javascript
 var a = "🐔"//这是一个四个字节的字符
@@ -27,7 +28,6 @@ a.codePointAt(1)//但是后面一位还是认的第一个字符的后两个字�
 //用for of 可以准确循环出
 for(let ch of a){console.log(ch.codePointAt(0))}
 VM611:1 128020
-
 
 
 ```
