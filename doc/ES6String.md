@@ -70,9 +70,34 @@ padStart  padEnd  //根据设定的字符串长度和字符来补全字符串，
 - 如果使用模板，反引号内的换行和空格都会被保留下来
 - {}内可以放变量，也可以放表达式
 
-  
+
 ```
 var name = "Bob",time = "today";
 `Hello ${name}`
 "Hello Bob"
 ```
+
+##### 标签模板
+什么叫标签模板？   
+```
+test`Hello ${name}`
+```
+test是一个函数，可以对模板字符串进行处理
+
+```
+function test(strs,...values){
+console.log(strs);
+console.log(values[0]);
+}
+
+var name = "leeds"
+
+test`Hello ${name}`
+
+output :
+
+["Hello ", "", raw: Array[2]]
+leeds
+```
+可以用该函数进行防XSS处理   
+但是没有判断和循环~~需要自行扩展
