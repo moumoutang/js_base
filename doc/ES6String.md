@@ -29,5 +29,22 @@ a.codePointAt(1)//但是后面一位还是认的第一个字符的后两个字�
 for(let ch of a){console.log(ch.codePointAt(0))}
 VM611:1 128020
 
+```
+#### fromCode
+
+旧版本也有，感觉很少用，就是从unicode的反转，但是之前也是同样的不支持四字节字符，新版本支持
+
+``` javascript
+String.fromCodePoint(0x20bb7)
+"𠮷"
+```
+
+#### 字符串遍历
+```
+for of //比传统的有点是可以识别大于FFFF的字符，如上所述
 
 ```
+
+#### At
+ 功能同charAt相同，同样扩展了识别范围
+ 
