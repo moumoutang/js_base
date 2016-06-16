@@ -38,3 +38,30 @@ test.name   "test"
 神奇吧
 
 ### 箭头函数
+- 注意的一点：函数体内的this就是定义时的对象，而不是使用时的对象
+- 特别注意在回调函数里，this的指向
+- 其根本原因就是箭头函数内的this根本就没有指向，只能去调用外层的this
+- arguments super new.target在箭头函数里不存在，引用arguments的话引用的外层的arguements
+- 既然没有自己的this，就不能用call，bind什么的去改变this指向
+- 不可以被用作构造函数，否则new会报错
+
+```javascript
+
+function foo(){
+  setTimeout(()=> {
+    console.log("id",this.id);
+    },100);
+}
+
+foo.call({ id:33})
+
+id 33  //result
+
+```
+### 函数绑定
+神奇的 :: 符号    
+可以链式写法    
+```javascript
+  foo :: bar
+  bar.bind(foo)
+```
